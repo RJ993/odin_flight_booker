@@ -1,0 +1,10 @@
+<%= form_with url: "/flights", method: :get do |form| %>
+ <%= form.collection_radio_buttons :departure_airport_id, Airport.order(:id), :id, :airport_code %> <br>
+ <%= form.collection_radio_buttons :arrival_airport_id, Airport.order(:id), :id, :airport_code %> <br>
+ <%= form.collection_radio_buttons :date, Flight.select(:date).distinct.order(:date), :date, :date %> <br>
+ <div>
+           <%= form.submit %>
+</div>
+<% end %>
+
+<%= render "results" %>

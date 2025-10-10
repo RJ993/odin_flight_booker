@@ -1,0 +1,19 @@
+<%= simple_form_for @booking do |f| %>
+    
+   <p> Flight Number: <%= @flight.id %> </p>
+   <p> Flight Date: <%= @flight.date %> </p>
+   <p> Leaving: <%= @flight.departure_airport.airport_code %> </p>
+   <p> Going To: <%= @flight.arrival_airport.airport_code %> </p>
+   <p> Passenger Limit: <%= @num_of_passengers %> </p>
+
+   <%= f.hidden_field :flight_id, :value => @flight.id %> <br>
+   
+        <%= f.simple_fields_for :passengers do |sub_form| %>
+                <%= sub_form.text_field :name %> <br>
+                <%= sub_form.email_field :email %> <br>
+                <br>
+        <% end %>
+
+
+    <%= f.submit %>
+<% end %>

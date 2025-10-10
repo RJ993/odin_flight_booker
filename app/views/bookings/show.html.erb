@@ -1,0 +1,14 @@
+<h1>Your Booked Flight</h1>
+
+<p> Flight Number: <%= @flight.id %> </p>
+<p> Flight Date: <%= @flight.date %> </p>
+<p> Leaving: <%= @flight.departure_airport.airport_code %> </p>
+<p> Going To: <%= @flight.arrival_airport.airport_code %> </p>
+<p> Passenger Limit: <%= @num_of_passengers %> </p>
+
+
+<ol> 
+<% @booking.passengers.each do |passenger| %>
+    <li> Name: <%= passenger.name %> <br> Email: <%= passenger.email %> </li>
+<% end %>
+<ol>

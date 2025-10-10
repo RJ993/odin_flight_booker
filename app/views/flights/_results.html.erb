@@ -1,0 +1,24 @@
+<% if @flights.present? %>
+
+   <% @flights.each do |flight| %>
+
+      <div>
+      This flight: <br>
+         Departs From -> <%= flight.departure_airport.airport_code %> <br>
+         Arrives at -> <%= flight.arrival_airport.airport_code %> <br>
+         Date -> <%= flight.date %> <br>
+         Duration -> <%= flight.duration %> <br>
+         Passenger Limit -> <%= flight.num_of_passengers %> <br>
+
+      </div>
+
+      <%= form_with url: "/bookings/new", method: :get do |form| %>
+      <%= form.hidden_field :flight_id, :value => flight.id %> <br>
+      <%= form.hidden_field :num_of_passengers, :value => flight.num_of_passengers %> <br>
+      <div>
+            <%= form.submit :value => "Select this flight?" %>
+      </div>
+      <% end %>
+
+   <% end %>
+<% end %>
