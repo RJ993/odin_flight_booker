@@ -5,6 +5,11 @@ export default class extends Controller {
   static values = { count: {type: Number, default: 1}, max: Number}
   static targets = [ "button" ]
   static classes = [ "hide" ]
+  connect(){
+    if (this.countValue >= this.maxValue){
+    this.buttonTarget.classList.add(this.hideClass)
+    }
+  }
   addCheck() {
     this.countValue++
     if (this.countValue >= this.maxValue){
