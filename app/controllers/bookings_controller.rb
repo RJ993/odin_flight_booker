@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
     @num_of_passengers = params[:num_of_passengers].to_i
     @booking = Booking.new
 
-    @num_of_passengers.times { @booking.passengers.build }
+    1.times { @booking.passengers.build }
   end
 
   def create
@@ -28,6 +28,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-      params.expect(booking: [ :flight_id, passengers_attributes: [ [ :name, :email ] ] ])
+      params.expect(booking: [ :flight_id, passengers_attributes: [ [ :name, :email, :_destroy ] ] ])
   end
 end
