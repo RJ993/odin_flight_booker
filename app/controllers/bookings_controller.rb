@@ -12,6 +12,9 @@ class BookingsController < ApplicationController
 
     if @booking.save
       redirect_to @booking
+      @booking.passengers.each do |passenger|
+        PassengerMailer.confirmation_email(@booking, passenger).deliver_now
+      end
       flash[:notice] = "You have registered."
     else
       render :new, status: :unprocessable_entity
